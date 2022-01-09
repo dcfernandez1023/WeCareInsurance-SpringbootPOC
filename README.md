@@ -11,6 +11,8 @@ The back-end code for this project is divided into 4 packages:
 
 The driver of this application is the `WeCareInsuranceApplication` class
 
+Static HTML/JS/CSS files are served from `/src/main/resources`
+
 ## Model
 ### `TestForm`
     Fields:
