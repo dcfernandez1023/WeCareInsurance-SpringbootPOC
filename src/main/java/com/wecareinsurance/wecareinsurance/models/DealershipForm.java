@@ -13,30 +13,30 @@ public class DealershipForm implements Model {
     private String liability_coverage;
     private String is_two_month;
     private String street;
-    private String street_2;
+    private String street2;
     private String city;
     private String state;
     private String zip;
     private String prev_street;
-    private String prev_street_2;
+    private String prev_street2;
     private String prev_city;
     private String prev_state;
     private String prev_zip;
     private String vin;
     private String annual_mileage;
     private String deductible;
-    private String is_road_side_chcked;
+    private String is_road_side_checked;
     private String is_rental;
     private String lienholder_email;
     private String lienholder_name;
     private String lienholder_address_1;
-    private String get_lienholder_address_2;
+    private String lienholder_address_2;
     private String lienholder_city;
     private String lienholder_state;
     private String lienholder_zip;
     private String additional_insured_name;
     private String additional_insured_address_1;
-    private String get_additional_insured_address_2;
+    private String additional_insured_address_2;
     private String additional_insured_city;
     private String additional_insured_state;
     private String additional_insured_zip;
@@ -50,7 +50,7 @@ public class DealershipForm implements Model {
     private String driver_years_licensed;
     private String driver_license_number;
     private String driver_state;
-    private String is_state_filing;
+    private String is_state_filling;
 
     public DealershipForm() {}
 
@@ -64,7 +64,6 @@ public class DealershipForm implements Model {
         }
         // Loop through this object's fields and ensure the 'data' argument contains all of this object's fields
         for(Field f: fields) {
-            f.setAccessible(true);
             String name = f.getName();
             Object value = data.get(name);
             // Skip over "form_id" field if it is a new form
@@ -100,6 +99,9 @@ public class DealershipForm implements Model {
     @Override
     public List<Field> getFields() {
         Field[] fields = this.getClass().getDeclaredFields();
+        for(Field f: fields) {
+            f.setAccessible(true);
+        }
         return Arrays.asList(fields);
     }
 
@@ -175,12 +177,12 @@ public class DealershipForm implements Model {
         this.street = street;
     }
 
-    public String getStreet_2() {
-        return street_2;
+    public String getstreet2() {
+        return street2;
     }
 
-    public void setStreet_2(String street_2) {
-        this.street_2 = street_2;
+    public void setstreet2(String street2) {
+        this.street2 = street2;
     }
 
     public String getCity() {
@@ -215,12 +217,12 @@ public class DealershipForm implements Model {
         this.prev_street = prev_street;
     }
 
-    public String getPrev_street_2() {
-        return prev_street_2;
+    public String getPrev_street2() {
+        return prev_street2;
     }
 
-    public void setPrev_street_2(String prev_street_2) {
-        this.prev_street_2 = prev_street_2;
+    public void setPrev_street2(String prev_street2) {
+        this.prev_street2 = prev_street2;
     }
 
     public String getPrev_city() {
@@ -271,12 +273,12 @@ public class DealershipForm implements Model {
         this.deductible = deductible;
     }
 
-    public String isIs_road_side_chcked() {
-        return is_road_side_chcked;
+    public String isis_road_side_checked() {
+        return is_road_side_checked;
     }
 
-    public void setIs_road_side_chcked(String is_road_side_chcked) {
-        this.is_road_side_chcked = is_road_side_chcked;
+    public void setis_road_side_checked(String is_road_side_checked) {
+        this.is_road_side_checked = is_road_side_checked;
     }
 
     public String isIs_rental() {
@@ -311,12 +313,12 @@ public class DealershipForm implements Model {
         this.lienholder_address_1 = lienholder_address_1;
     }
 
-    public String getGet_lienholder_address_2() {
-        return get_lienholder_address_2;
+    public String getlienholder_address_2() {
+        return lienholder_address_2;
     }
 
-    public void setGet_lienholder_address_2(String get_lienholder_address_2) {
-        this.get_lienholder_address_2 = get_lienholder_address_2;
+    public void setlienholder_address_2(String lienholder_address_2) {
+        this.lienholder_address_2 = lienholder_address_2;
     }
 
     public String getLienholder_city() {
@@ -359,12 +361,12 @@ public class DealershipForm implements Model {
         this.additional_insured_address_1 = additional_insured_address_1;
     }
 
-    public String getGet_additional_insured_address_2() {
-        return get_additional_insured_address_2;
+    public String getadditional_insured_address_2() {
+        return additional_insured_address_2;
     }
 
-    public void setGet_additional_insured_address_2(String get_additional_insured_address_2) {
-        this.get_additional_insured_address_2 = get_additional_insured_address_2;
+    public void setadditional_insured_address_2(String additional_insured_address_2) {
+        this.additional_insured_address_2 = additional_insured_address_2;
     }
 
     public String getAdditional_insured_city() {
@@ -471,11 +473,11 @@ public class DealershipForm implements Model {
         this.driver_state = driver_state;
     }
 
-    public String isIs_state_filing() {
-        return is_state_filing;
+    public String isis_state_filling() {
+        return is_state_filling;
     }
 
-    public void setIs_state_filing(String is_state_filing) {
-        this.is_state_filing = is_state_filing;
+    public void setis_state_filling(String is_state_filling) {
+        this.is_state_filling = is_state_filling;
     }
 }

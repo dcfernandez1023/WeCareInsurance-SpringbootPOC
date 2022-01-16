@@ -43,7 +43,6 @@ public class DealershipFormDao extends BaseDao {
                 sb.append("')");
             }
         }
-        System.out.println(sb.toString());
         this.db.insertOrUpdate(sb.toString());
         return newForm;
     }
@@ -56,6 +55,10 @@ public class DealershipFormDao extends BaseDao {
         StringBuilder sb = new StringBuilder("UPDATE " + TABLE + " SET ");
         for(int i = 0; i < fields.size(); i++) {
             Field f = fields.get(i);
+            // Avoid updating form_id
+            if(f.getName().equals("form_id")) {
+                continue;
+            }
             sb.append(f.getName());
             sb.append(" = ");
             sb.append("'");
@@ -70,9 +73,14 @@ public class DealershipFormDao extends BaseDao {
                 sb.append("'");
             }
         }
-        System.out.println(sb.toString());
         this.db.insertOrUpdate(sb.toString());
+        form.setForm_id(id); // ensure form_id remains consistent (in case caller erroneously tried to update the form_id)
         return form;
+    }
+
+    public String deleteForm(String id) throws Exception {
+        String query = String.format("DELETE FROM " + TABLE + " WHERE form_id = '%s'", id);
+        return this.db.delete(query, id);
     }
 
     @Override

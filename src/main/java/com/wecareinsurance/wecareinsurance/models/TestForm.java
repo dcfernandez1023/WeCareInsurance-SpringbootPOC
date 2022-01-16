@@ -51,6 +51,9 @@ public class TestForm implements Model {
     @Override
     public List<Field> getFields() {
         Field[] fields = this.getClass().getDeclaredFields();
+        for(Field f: fields) {
+            f.setAccessible(true);
+        }
         return Arrays.asList(fields);
     }
 
