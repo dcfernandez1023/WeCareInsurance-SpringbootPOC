@@ -1,9 +1,7 @@
 package com.wecareinsurance.wecareinsurance.models;
 
 import com.wecareinsurance.wecareinsurance.dao.TestFormDao;
-import net.bytebuddy.implementation.bytecode.Throw;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 
 public class TestFormTest {

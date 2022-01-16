@@ -9,6 +9,7 @@ const TEST_FORM_ELEMENTS = [
     {id: "phone", label: "Phone", element: INPUT, type: "text"},
     {id: "company", label: "Company", element: INPUT, type: "text"},
     {id: "isEmployed", label: "Currently Employed", element: SELECT, type: "text", options: [
+            {display: "Select", value: ""},
             {display: "Yes", value: "yes"},
             {display: "No", value: "no"}
         ]
@@ -16,6 +17,10 @@ const TEST_FORM_ELEMENTS = [
 ];
 
 const renderTestFormInputs = (containerId) => {
+    let formSession = getSessionVar("form");
+    if(formSession !== null && formSession !== undefined) {
+      formSession = JSON.parse(formSession);
+    }
     var container = document.getElementById(containerId);
     let row = document.createElement("div");
     row.classList.add("row");
@@ -43,6 +48,7 @@ const renderTestFormInputs = (containerId) => {
         else {
             continue;
         }
+        element.value = formSession !== null && formSession[element.id] !== undefined ? formSession[element.id] : "";
         let label = document.createElement("label");
         label.innerHTML = elementMetaData.label;
         label.setAttribute("for", elementMetaData.id);
@@ -82,6 +88,7 @@ const onSubmit = () => {
         var full = location.protocol+'//'+location.hostname+(location.port.toString().trim().length !== 0 ? ':'+location.port: '');
         axios.post(full + "/api/testForm/create", data)
             .then((res) => {
+                setSessionVar("form", JSON.stringify(data));
                 alert("New form id: " + res.data);
             })
             .catch((error) => {

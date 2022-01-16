@@ -35,9 +35,16 @@ public class MySQLDataAccess implements DatabaseAccess {
     }
 
     @Override
-    public void manipulateData(String query) throws SQLException {
+    public void insertOrUpdate(String query) throws SQLException {
         Statement stmt = CON.createStatement();
         stmt.executeUpdate(query);
+    }
+
+    @Override
+    public String delete(String query, String identifier) throws SQLException {
+        Statement stmt = CON.createStatement();
+        stmt.executeUpdate(query);
+        return identifier;
     }
 
     private void initializeConnection(String username, String password, String url) throws ClassNotFoundException, SQLException {

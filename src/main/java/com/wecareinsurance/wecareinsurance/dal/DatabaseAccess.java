@@ -9,5 +9,6 @@ public interface DatabaseAccess {
     // Queries records from database given a query and returns the records as a List of HashMaps
     public List<HashMap<String, Object>> get(String query) throws Exception;
     // Manipulates (insert, update, delete) data from database given a query
-    public void manipulateData(String query) throws Exception;
+    public void insertOrUpdate(String query) throws Exception;
+    public String delete(String query, String identifier) throws Exception;
 }

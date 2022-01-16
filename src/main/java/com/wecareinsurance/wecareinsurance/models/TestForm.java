@@ -1,9 +1,5 @@
 package com.wecareinsurance.wecareinsurance.models;
 
-import com.wecareinsurance.wecareinsurance.dal.DatabaseAccess;
-import com.wecareinsurance.wecareinsurance.dal.MySQLDataAccess;
-
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.UUID;
 

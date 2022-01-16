@@ -4,8 +4,6 @@ import com.wecareinsurance.wecareinsurance.dal.DatabaseAccess;
 import com.wecareinsurance.wecareinsurance.dal.MySQLDataAccess;
 import com.wecareinsurance.wecareinsurance.models.TestForm;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +39,7 @@ public class TestFormDao {
         TestForm tf = new TestForm(name, age, email, phone, company, isEmployed);
         String values = String.format("('%1$s', '%2$s', %3$d, '%4$s', '%5$s', '%6$s', %7$s);", tf.getId(), name, age, email, phone, company, (isEmployed ? TRUE : FALSE));
         String query = "INSERT INTO " + TABLE + " VALUES " + values;
-        this.db.manipulateData(query);
+        this.db.insertOrUpdate(query);
         return tf.getId();
     }
 }
