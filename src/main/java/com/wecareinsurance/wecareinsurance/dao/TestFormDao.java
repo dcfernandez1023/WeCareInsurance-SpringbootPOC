@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 
-public class TestFormDao {
+public class TestFormDao extends BaseDao {
     // Note: this is just for testing, but these should really be in a config file or environment variables
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "";
@@ -17,18 +17,12 @@ public class TestFormDao {
     private static final String TRUE = "TRUE";
     private static final String FALSE = "FALSE";
 
-    private DatabaseAccess db;
-
-    public TestFormDao() throws SQLException, ClassNotFoundException {
-        this.db = new MySQLDataAccess(DB_USERNAME, DB_PASSWORD, DB_URL);
+    public TestFormDao() throws Exception {
+        super();
     }
 
     public HashMap<String, Object> getTestForm(String id) throws Exception {
         List<HashMap<String, Object>> testForms = this.db.get(String.format("SELECT * FROM " + TABLE + " WHERE ID = '%s';", id));
-        /*
-         * Size should equal exactly one (and if the SQL table is created with PRIMARY KEY constraint on id, then this
-           should always be 1)
-       */
         if(testForms.size() != 1) {
             return new HashMap<String, Object>();
         }
@@ -41,5 +35,10 @@ public class TestFormDao {
         String query = "INSERT INTO " + TABLE + " VALUES " + values;
         this.db.insertOrUpdate(query);
         return tf.getId();
+    }
+
+    @Override
+    protected void initDb() throws SQLException, ClassNotFoundException {
+        this.db = new MySQLDataAccess(DB_USERNAME, DB_PASSWORD, DB_URL);
     }
 }

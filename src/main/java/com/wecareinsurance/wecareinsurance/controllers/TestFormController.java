@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class TestFormController {
     private TestFormDao tfd;
 
-    public TestFormController() throws SQLException, ClassNotFoundException {
+    public TestFormController() throws Exception {
         this.tfd = new TestFormDao();
     }
 

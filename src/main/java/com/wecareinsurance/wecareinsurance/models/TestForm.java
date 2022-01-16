@@ -1,7 +1,7 @@
 package com.wecareinsurance.wecareinsurance.models;
 
-import java.util.HashMap;
-import java.util.UUID;
+import java.lang.reflect.Field;
+import java.util.*;
 
 public class TestForm implements Model {
     private String id;
@@ -39,16 +39,19 @@ public class TestForm implements Model {
     }
 
     @Override
-    public HashMap<String, Object> toHashMap() {
+    public HashMap<String, Object> toHashMap() throws IllegalAccessException {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("id", this.id);
-        map.put("name", this.name);
-        map.put("age", this.age);
-        map.put("email", this.email);
-        map.put("phone", this.phone);
-        map.put("company", this.company);
-        map.put("isEmployed", this.isEmployed);
+        List<Field> fields = this.getFields();
+        for(Field f: fields) {
+            map.put(f.getName(), f.get(this));
+        }
         return map;
+    }
+
+    @Override
+    public List<Field> getFields() {
+        Field[] fields = this.getClass().getDeclaredFields();
+        return Arrays.asList(fields);
     }
 
     public String getId() {

@@ -4,7 +4,7 @@ import com.wecareinsurance.wecareinsurance.dao.TestFormDao;
 
 import java.util.HashMap;
 
-public class TestFormTest {
+public class TestTestForm {
     public static void main(String[] args) throws Exception {
         String line = "\n-------\n";
         String success = "Result: SUCCESS ✅";
