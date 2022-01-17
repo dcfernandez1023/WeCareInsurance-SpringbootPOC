@@ -1,11 +1,11 @@
-const getSessionVar = (key) => {
+export const getSessionVar = (key) => {
   return window.sessionStorage.getItem(key);
 }
 
-const setSessionVar = (key, value) => {
+export const setSessionVar = (key, value) => {
   window.sessionStorage.setItem(key, value);
 }
 
-const destroySession = () => {
+export const destroySession = () => {
   window.sessionStorage.clear();
 }

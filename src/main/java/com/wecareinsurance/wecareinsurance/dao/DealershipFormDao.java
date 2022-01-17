@@ -26,7 +26,7 @@ public class DealershipFormDao extends BaseDao {
         return new DealershipForm(dealershipForms.get(0));
     }
 
-    // Creates a new form and returns it upon success
+    // Creates a new form and returns its id upon success
     public DealershipForm createForm(HashMap<String, Object> newFormData) throws Exception {
         DealershipForm newForm = new DealershipForm(newFormData);
         List<Field> fields = newForm.getFields();

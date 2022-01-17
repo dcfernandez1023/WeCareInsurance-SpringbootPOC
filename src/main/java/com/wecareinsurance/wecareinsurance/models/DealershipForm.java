@@ -161,7 +161,7 @@ public class DealershipForm implements Model {
         this.liability_coverage = liability_coverage;
     }
 
-    public String isIs_two_month() {
+    public String getIs_two_month() {
         return is_two_month;
     }
 
