@@ -101,13 +101,13 @@ Creates a new `DealershipForm` object and inserts it into the database. Returns 
 JSON representation of the new `DealershipForm` upon success.
 
 <i> * All fields of the DealershipForm model object are required in
-the request body</i>
+the request body, except <b>form_id</b></i>
 
 --
 
 
-### POST: `/api/dealershipForm/update`
-Updates an existing `DealershipForm` object in the database. Returns a  
+### POST: `/api/dealershipForm/update/{id}`
+Updates an existing `DealershipForm` object in the database using the `id` url parameter. Returns a  
 JSON representation of the updated `DealershipForm` upon success.
 
 <i> * All fields of the DealershipForm model object are required in

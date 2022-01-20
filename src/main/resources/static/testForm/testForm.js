@@ -1,3 +1,5 @@
+import { setSessionVar, getSessionVar } from "../js/sessionStorageHelper.js";
+
 const INPUT = "input";
 const SELECT = "select";
 const OPTION = "option";
@@ -36,7 +38,7 @@ const renderTestFormInputs = (containerId) => {
         else if(elementMetaData.element === SELECT) {
             element = document.createElement(SELECT);
             element.id = elementMetaData.id;
-            element.type = elementMetaData.type;
+            // element.type = elementMetaData.type;
             element.classList.add("form-select");
             for(var x = 0; x < elementMetaData.options.length; x++) {
               var option = document.createElement(OPTION);
@@ -85,10 +87,10 @@ const onSubmit = () => {
             }
         }
         console.log(data);
+        setSessionVar("form", JSON.stringify(data));
         var full = location.protocol+'//'+location.hostname+(location.port.toString().trim().length !== 0 ? ':'+location.port: '');
         axios.post(full + "/api/testForm/create", data)
             .then((res) => {
-                setSessionVar("form", JSON.stringify(data));
                 alert("New form id: " + res.data);
             })
             .catch((error) => {
@@ -99,3 +101,5 @@ const onSubmit = () => {
         alert("Error: " + error.message);
     }
 }
+
+export { renderTestFormInputs, onSubmit };
